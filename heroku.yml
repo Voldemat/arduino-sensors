@@ -5,9 +5,6 @@ build:
   docker:
     server: ./backend/Dockerfile
     front-end: ./front-end/Dockerfile
-release:
-  command: docker compose up -d
-  
 
 run:
   server: npm start
