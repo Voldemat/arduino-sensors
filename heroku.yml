@@ -3,7 +3,7 @@ setup:
   - plan: heroku-redis
 build:
   docker:
-    server: ./backend/Dockerfile
+    server: ./back-end/Dockerfile
     front-end: ./front-end/Dockerfile
 
 run:
