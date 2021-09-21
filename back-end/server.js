@@ -14,10 +14,18 @@ const PORT = process.env.PORT || 8000;
 
 const app = express();
 
+app.use((req, res, next) => {
+    res.set("Access-Control-Allow-Origin", "*")
+    next();
+})
 
+app.get("/", (req, res) => {
+    res.send("Hello from express")
+})
 app.get("/set-data", (req, res) => {
+    console.log("arduino send data");
     db.set("sensors", JSON.stringify(req.query))
-    res.send("Ok")
+    res.send("hello arduino")
 })
 
 
@@ -40,6 +48,4 @@ io.on("connection", socket => {
         })
     }, 100)
 })
-httpServer.listen(PORT, () => {
-    console.log(`Server started at localhost:${PORT}`)
-})
+httpServer.listen(PORT, "0.0.0.0")
